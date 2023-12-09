@@ -1,8 +1,4 @@
-import { render, screen ,fireEvent } from '@testing-library/react';
-import {waitFor} from "@testing-library/dom"
-import userEvent from '@testing-library/user-event'
-
-import React from "react";
+import { render, screen } from '@testing-library/react';
 import Weather from './App';
 
 describe('Test wrong callback params on httpGetAsync', () => {
