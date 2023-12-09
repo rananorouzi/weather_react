@@ -27,8 +27,15 @@ This page is responsive and can be shown correctly in every screen size.
 - "react-scripts": "5.0.1",
 - "react-test-renderer": "^18.2.0",
 - "web-vitals": "^2.1.4"
-  
-### Script functions
+### Weather class
+This class is defined in App.js. 
+#### Weather class attributes
+- weatherUrl 
+       - it containes url to fetch weather data
+- state
+    - chartData : data needed for create chart
+    - tempUnit : current temperature unit
+#### Weather Class functions
 
 - fetchWeatherData
     - This function, is the main task on the page. It would be called when the page is loaded or when the user refreshes or asks for another unit of temperature.
