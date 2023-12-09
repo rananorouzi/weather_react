@@ -451,7 +451,7 @@ class Weather extends React.Component {
     }
     render() {
         return (
-            <div className="container px-5">
+            <div className="container px-5 div_center">
                 <div className="flex items-stretch justify-between flex-wrap div_center">
                     <div className="left_header align-middle flex">
                         <div className="inline-block">
