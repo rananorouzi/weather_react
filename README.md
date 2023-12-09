@@ -1,7 +1,7 @@
 ### Weather
 
 ### Description
-This application is programmed with JavaScript. weather data is getting from the 'https://api.open-meteo.com/v1/forecast' API and will show like the picture below:
+This application is programmed with JavaScript. The UI implemented using React.js. The weather data is getting from the 'https://api.open-meteo.com/v1/forecast' API and will show like the picture below:
 
 ![result sample](public/weather_sample.png "Result Sample").
 
