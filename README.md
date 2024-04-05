@@ -27,45 +27,11 @@ This page is responsive and can be shown correctly in every screen size.
 - "react-scripts": "5.0.1",
 - "react-test-renderer": "^18.2.0",
 - "web-vitals": "^2.1.4"
-### Weather class
-This class is defined in App.js. 
-#### Weather class attributes
-- weatherUrl 
-       - it containes url to fetch weather data
-- state
-    - chartData : data needed for create chart
-    - tempUnit : current temperature unit
-#### Weather Class functions
 
-- fetchWeatherData
-    - This function, is the main task on the page. It would be called when the page is loaded or when the user refreshes or asks for another unit of temperature.
-    - Parameters
-        - temp : temperature unit. It can be `c` or `f`. Invalid input is considered as `c` .
-        
-- httpGetAsync
-    - This function gets the URL and its parameters, then returns its response.
-    - return boolean
-    - Parameters
-            - theUrl : a URL (string) that needs to be fetched
-            - params : all parameters for URL as an object
-            - callback : a function that should be executed as a callback for GET
-- formatParams
-    - This function gets an object of parameters and converts it to a string and valid format for URL.
-    - return string
-    - Parameters
-        - params : an object of all parameters of url. keys are names and values are values of parameters. 
-            - example
-                ```
-                  {
-                      "latitude": "65.01",
-                      "longitude": "25.47",
-                      "current": "temperature_2m,weather_code,wind_speed_10m",
-                      "hourly": "temperature_2m",
-                      "daily": "weather_code,temperature_2m_max,temperature_2m_min",
-                      "models": "best_match"
-                  }
-                ```
-- createDailyWeatherHTML
+#### Functions components
+- Weather
+    - It is the main function which uses other functions result and manipulate data to show the weather foreacst
+- CreateDailyWeatherHTML
     - This function gets the daily part of the GET response and creates HTML based on it.
     - Parameters
         - weatherData : object contains daily forecast.
@@ -129,7 +95,7 @@ This class is defined in App.js.
                     }
                 }
             ```
-- createCurrentWeatherHTML
+- CreateCurrentWeatherHTML
     - This function gets the current part of the GET response and creates HTML based on it.
     - Parameters
         - weatherData : object contains current weather.
@@ -146,7 +112,7 @@ This class is defined in App.js.
                 }
             ```
          
-- createChart
+- CreateChart
     - This function gets the hourly part of the GET response and creates a chart (using Highcharts) based on it.
     - Parameters
         - weatherData : an object/array of hourly forecast data
@@ -279,27 +245,22 @@ This class is defined in App.js.
                     ]
                 ]
                 ```
-- createTodayDate
+- CreateTodayDate
     - This function returns today's date and current time
     - return string
-- formatDateToMonthDay
+- FormatDateToMonthDay
     - This function returns the formatted date
     - return string
     - Parameter
         - date (date string)
+- CheckWeatherSVG
+    - This function returns the formatted date
+    - return HTML SVG
+    - Parameter
+        - code (number code)
 ### How to run
 `npm start` command on the terminal in project forlder. 
 
-### How to test
-
-Tests are defined test.js file. these tests are for the following functions:
-- httpGetAsync
-- formatParams
-- formatDateToMonthDay
-
-other functions manipulate HTML based on the result of these functions.
-
-you can run the test by `npm test` command on the terminal in project forlder. The result prints in the terminal.
 
 ### potential plans
 - Choose an area to get its weather forecast
