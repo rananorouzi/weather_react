@@ -3,8 +3,9 @@ import React, { ReactElement } from "react";
 import CreateCurrentWeatherHTML from "./today-weather";
 import CreateDailyWeatherHTML from "./daily-weather";
 import CreateChart from "./create-highchart";
+import Setting from "./setting";
 
-function MainHtml(props: { params: any; }): ReactElement {
+function MainHtml(props: { params: any }): ReactElement {
   const params = props.params;
   return (
     <div className="container px-5">
@@ -68,6 +69,7 @@ function MainHtml(props: { params: any; }): ReactElement {
           </span>
         </div>
         <div className="right_icons temp_chose self-center justify-en flex justify-items-end  mb-3">
+          <Setting />
           <button
             onClick={() => params.onClickRefHandler()}
             className="active z-[2] text-slate-900	inline-block rounded bg-white border border-solid border-gray-400 mr-4 rounded-lg px-2 text-xs font-medium leading-normal hover:bg-blue-200 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] active:bg-blue-400 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
@@ -121,7 +123,7 @@ function MainHtml(props: { params: any; }): ReactElement {
       <div className="overflow-hidden container lg:flex  gap-3 font-sans div_center">
         <div
           id="left_col"
-          className="flex-1 bg-white border border-gray-200 rounded-lg shadow mb-2 lg:mb-0"
+          className="flex-none bg-white border border-gray-200 rounded-lg shadow mb-2 lg:mb-0"
         >
           <div id="current" className="p-3 lg:p-5 w-full">
             <CreateCurrentWeatherHTML currentWeather={params.currentWeather} />
@@ -129,7 +131,7 @@ function MainHtml(props: { params: any; }): ReactElement {
         </div>
         <div
           id="right_col"
-          className="bg-white border border-gray-200 rounded-lg shadow"
+          className="flex-1 bg-white border border-gray-200 rounded-lg shadow"
         >
           <div id="week" className="p-3 lg:p-5 mb-4">
             <CreateDailyWeatherHTML weekWeather={params.weekWeather} />

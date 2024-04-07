@@ -113,7 +113,7 @@ function CreateDailyWeatherHTML(props: { weekWeather: any }) {
         <header className="w-full text-black font-sans text-x2 font-bold self-center mb-3">
           Weekly Highlight
         </header>
-        <div className="grid grid-cols-3 xl:grid-cols-7 gap-2 py-2 auto-rows-fr">
+        <div className="grid grid-cols-7 max-xl:grid-cols-3 gap-2 py-2 auto-rows-fr">
           {html}
         </div>
       </section>

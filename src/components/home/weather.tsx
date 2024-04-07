@@ -2,15 +2,18 @@ import "../../App.css";
 import React, { ReactElement } from "react";
 import { useState, useEffect } from "react";
 import { weatherCodes } from "../../data/weather-codes";
-import MainHtml from "./main-html"
-import {formatHourlyData , formatDailyData} from "./format-data";
+import MainHtml from "./main-html";
+import { formatHourlyData, formatDailyData } from "./format-data";
 
 function Weather(): ReactElement {
   type dataType = {
     [key: string]: any;
   };
+  const storageTemp: string | null = localStorage.getItem("defaultTemp");
+  const defaultTemp: string = storageTemp != null ? storageTemp : "c";
+
   const [data, setData] = useState<dataType>({});
-  const [tmp, setTmp] = useState("c");
+  const [tmp, setTmp] = useState(defaultTemp);
   let weatherUrl = "https://api.open-meteo.com/v1/forecast";
   const weatherParams = {
     latitude: "65.01",
@@ -60,9 +63,12 @@ function Weather(): ReactElement {
 
     //create daily data
     weekWeather = formatDailyData(data);
- 
+
     //create data for chart
-    hourlyData = formatHourlyData(data["hourly"]["time"], data["hourly"]["temperature_2m"]);
+    hourlyData = formatHourlyData(
+      data["hourly"]["time"],
+      data["hourly"]["temperature_2m"],
+    );
   }
   const onClickTempHandler = (temp: string) => {
     temp === "f" ? setTmp("f") : setTmp("c");
@@ -77,19 +83,15 @@ function Weather(): ReactElement {
     deactive: "text-slate-900 bg-white",
   };
   const mainHtmlParams = {
-     'onClickTempHandler':onClickTempHandler,
-     'onClickRefHandler' : onClickRefHandler,
-     'hourlyData': hourlyData,
-     'weekWeather':weekWeather,
-     'currentWeather':currentWeather, 
-     'buttonClassNames':buttonClassNames,
-     'tmp':tmp
-  }
-  return(
-    <MainHtml params={mainHtmlParams}/>
-  );
+    onClickTempHandler: onClickTempHandler,
+    onClickRefHandler: onClickRefHandler,
+    hourlyData: hourlyData,
+    weekWeather: weekWeather,
+    currentWeather: currentWeather,
+    buttonClassNames: buttonClassNames,
+    tmp: tmp,
+  };
+  return <MainHtml params={mainHtmlParams} />;
 }
 
 export default Weather;
-
-
