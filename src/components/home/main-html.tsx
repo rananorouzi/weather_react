@@ -8,7 +8,7 @@ import Setting from "./setting";
 function MainHtml(props: { params: any }): ReactElement {
   const params = props.params;
   return (
-    <div className="container px-5">
+    <div className="container px-5 m-auto	m-auto">
       <div className="flex items-stretch justify-between flex-wrap div_center">
         <div className="left_header align-middle flex">
           <div className="inline-block">
@@ -120,10 +120,10 @@ function MainHtml(props: { params: any }): ReactElement {
           </button>
         </div>
       </div>
-      <div className="overflow-hidden container lg:flex  gap-3 font-sans div_center">
+      <div className="overflow-hidden container lg:flex flex-row gap-3 font-sans div_center">
         <div
           id="left_col"
-          className="flex-none bg-white border border-gray-200 rounded-lg shadow mb-2 lg:mb-0"
+          className="lg:basis-1/4 bg-white border border-gray-200 rounded-lg shadow mb-2 lg:mb-0"
         >
           <div id="current" className="p-3 lg:p-5 w-full">
             <CreateCurrentWeatherHTML currentWeather={params.currentWeather} />
@@ -131,7 +131,7 @@ function MainHtml(props: { params: any }): ReactElement {
         </div>
         <div
           id="right_col"
-          className="flex-1 bg-white border border-gray-200 rounded-lg shadow"
+          className="lg:basis-3/4 grid bg-white border border-gray-200 rounded-lg shadow"
         >
           <div id="week" className="p-3 lg:p-5 mb-4">
             <CreateDailyWeatherHTML weekWeather={params.weekWeather} />

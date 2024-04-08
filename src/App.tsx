@@ -3,12 +3,7 @@ import React, { ReactElement } from "react";
 import Weather from "./components/home/weather";
 
 function App(): ReactElement {
-  
-  return(
-    <Weather />
-  );
+  return <Weather />;
 }
 
 export default App;
-
-

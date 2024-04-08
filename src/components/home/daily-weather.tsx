@@ -83,7 +83,7 @@ function CreateDailyWeatherHTML(props: { weekWeather: any }) {
         <div
           key={index}
           className={
-            "text-center daily_forecast p-3 h-full border border-gray-200 rounded shadow " +
+            "max-sm:mb-2 text-center daily_forecast p-3 h-full border border-gray-200 rounded shadow " +
             todayWidth
           }
         >
@@ -113,7 +113,7 @@ function CreateDailyWeatherHTML(props: { weekWeather: any }) {
         <header className="w-full text-black font-sans text-x2 font-bold self-center mb-3">
           Weekly Highlight
         </header>
-        <div className="grid grid-cols-7 max-xl:grid-cols-3 gap-2 py-2 auto-rows-fr">
+        <div className="sm:grid xl:grid-cols-7 max-xl:grid-cols-3 gap-2 py-2 sm:mb-2 auto-rows-fr">
           {html}
         </div>
       </section>
