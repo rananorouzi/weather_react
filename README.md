@@ -4,7 +4,7 @@
 
 This application is programmed with JavaScript. The UI implemented using React.js. The weather data is getting from the 'https://api.open-meteo.com/v1/forecast' API and will show like the picture below:
 
-![result sample](public/weather_sample.png "Result Sample").
+![result sample](public/weather.png "Result Sample").
 
 The default temperature unit is Celcius. You can see temperatures in Farenhite by pressing the F button (at the top-right of the page).
 
@@ -174,7 +174,7 @@ This page is responsive and can be shown correctly in every screen size.
   - Parameter
     - code (number code)
 
--Setting
+- Setting
   - This function returns setting to define user's default temperature unit 
 
 
