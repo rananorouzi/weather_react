@@ -2,8 +2,8 @@ import "../../App.css";
 import React, { ReactElement } from "react";
 import { useState, useEffect } from "react";
 import { weatherCodes } from "../../data/weather-codes";
-import MainHtml from "./main-html";
-import { formatHourlyData, formatDailyData } from "./format-data";
+import MainHtml from "./MainHtml";
+import { formatHourlyData, formatDailyData } from "./FormatData";
 
 function Weather(): ReactElement {
   type dataType = {

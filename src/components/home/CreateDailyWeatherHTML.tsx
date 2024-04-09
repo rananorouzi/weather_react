@@ -1,4 +1,4 @@
-import CheckWeatherSVG from "./check-svg";
+import CheckWeatherSVG from "./CheckWeatherSVG";
 import { weatherCodes } from "../../data/weather-codes";
 import React from "react";
 

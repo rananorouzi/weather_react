@@ -1,5 +1,5 @@
-import { CreateTodayDate } from "./format-date";
-import CheckWeatherSVG from "./check-svg";
+import { CreateTodayDate } from "./FormatDate";
+import CheckWeatherSVG from "./CheckWeatherSVG";
 import { weatherCodes } from "../../data/weather-codes";
 import React from "react";
 

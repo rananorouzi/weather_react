@@ -1,5 +1,5 @@
 import React from "react";
-import { FormatDateToMonthDay } from "./format-date";
+import { FormatDateToMonthDay } from "./FormatDate";
 import { weatherCodes } from "../../data/weather-codes";
 
 export const formatHourlyData = (times: any, temps: any) => {
