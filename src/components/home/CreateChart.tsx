@@ -3,7 +3,15 @@ import Highcharts from "highcharts";
 import React from "react";
 
 function CreateChart(props: { chartData: any }) {
+
   const chartData = props.chartData;
+
+  if(Object.keys(props).length === 0 || Object.keys(chartData).length === 0){
+    return (
+    <><div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative m-2" role="alert">
+    <strong className="font-bold">Invalid parameter!</strong>
+  </div></>);
+  }
   let color = Highcharts.getOptions().colors?.[0];
   if (color === undefined) {
     color = "#0F0";

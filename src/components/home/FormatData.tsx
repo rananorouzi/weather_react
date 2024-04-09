@@ -31,6 +31,7 @@ export const formatDailyData = (data: { [x: string]: any }) => {
       min_temp: weekdailys["temperature_2m_min"][i],
       max_temp: weekdailys["temperature_2m_max"][i],
     };
+
   }
   return weekWeather;
 };

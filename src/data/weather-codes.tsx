@@ -9,7 +9,7 @@ export const weatherCodes: codeDetail = {
   0: {
     name: "Clear sky",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -28,7 +28,7 @@ export const weatherCodes: codeDetail = {
   1: {
     name: "Mainly clear",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -47,7 +47,7 @@ export const weatherCodes: codeDetail = {
   2: {
     name: "partly cloudy",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -73,7 +73,7 @@ export const weatherCodes: codeDetail = {
   3: {
     name: "overcast",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -99,7 +99,7 @@ export const weatherCodes: codeDetail = {
   45: {
     name: "Fog",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -119,7 +119,7 @@ export const weatherCodes: codeDetail = {
   48: {
     name: "depositing rime fog",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -139,7 +139,7 @@ export const weatherCodes: codeDetail = {
   51: {
     name: "Drizzle: Light",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -166,7 +166,7 @@ export const weatherCodes: codeDetail = {
   53: {
     name: "Drizzle: moderate",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -193,7 +193,7 @@ export const weatherCodes: codeDetail = {
   55: {
     name: "Drizzle: dense intensity",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -220,7 +220,7 @@ export const weatherCodes: codeDetail = {
   56: {
     name: "Freezing Drizzle: Light",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -247,7 +247,7 @@ export const weatherCodes: codeDetail = {
   57: {
     name: "Freezing Drizzle: dense intensity",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -286,7 +286,7 @@ export const weatherCodes: codeDetail = {
   61: {
     name: "Rain: Slight",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -311,7 +311,7 @@ export const weatherCodes: codeDetail = {
   63: {
     name: "Rain: moderate",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -336,7 +336,7 @@ export const weatherCodes: codeDetail = {
   65: {
     name: "Rain:  heavy intensity",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -361,7 +361,7 @@ export const weatherCodes: codeDetail = {
   66: {
     name: "Freezing Rain: Light",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -398,7 +398,7 @@ export const weatherCodes: codeDetail = {
   67: {
     name: "Freezing Rain: heavy intensity",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -435,7 +435,7 @@ export const weatherCodes: codeDetail = {
   71: {
     name: "Snow fall: Slight",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -476,7 +476,7 @@ export const weatherCodes: codeDetail = {
   73: {
     name: "Snow fall: moderate",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -517,7 +517,7 @@ export const weatherCodes: codeDetail = {
   75: {
     name: "Snow fall: heavy intensity",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -558,7 +558,7 @@ export const weatherCodes: codeDetail = {
   77: {
     name: "Snow grains",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -599,7 +599,7 @@ export const weatherCodes: codeDetail = {
   80: {
     name: "Rain showers: Slight",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -624,7 +624,7 @@ export const weatherCodes: codeDetail = {
   81: {
     name: "Rain showers: moderate",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -649,7 +649,7 @@ export const weatherCodes: codeDetail = {
   82: {
     name: "Rain showers:violent",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -674,7 +674,7 @@ export const weatherCodes: codeDetail = {
   85: {
     name: "Snow showers slight",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -715,7 +715,7 @@ export const weatherCodes: codeDetail = {
   86: {
     name: "Snow showers heavy",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -756,7 +756,7 @@ export const weatherCodes: codeDetail = {
   95: {
     name: "Thunderstorm: Slight or moderate",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -788,7 +788,7 @@ export const weatherCodes: codeDetail = {
   96: {
     name: "Thunderstorm with slight hail",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -820,7 +820,7 @@ export const weatherCodes: codeDetail = {
   90: {
     name: "Thunderstorm with heavy hail",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"
@@ -852,7 +852,7 @@ export const weatherCodes: codeDetail = {
   undefined: {
     name: "undefined",
     icon: (
-      <svg
+      <svg role="weather_svg_icon"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         width="128"

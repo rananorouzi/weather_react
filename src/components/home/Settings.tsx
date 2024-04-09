@@ -13,6 +13,9 @@ import {
 
 function TempUnitButtons(parameters: { buttonParams: any; }) : ReactElement{
   const params = parameters.buttonParams;
+  if(Object.keys(params).length == 0){
+    return <></>;
+  }
   return(
     <>
     <button
