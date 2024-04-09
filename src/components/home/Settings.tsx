@@ -70,8 +70,9 @@ function TempUnitButtons(parameters: { buttonParams: any; }) : ReactElement{
   );
 }
 function Setting(): ReactElement {
+  const storageTemp: string | null = localStorage.getItem("defaultTemp");
   const [showModal, setShowModal] = useState(false);
-  const [defaultTemp, setdefaultTemp] = useState('c');
+  const [defaultTemp, setdefaultTemp] = useState( storageTemp != null ? storageTemp : "c");
   const onSaveButtonClickHandler = (defaultTemp : string) => {
     localStorage.setItem('defaultTemp', defaultTemp);
     setShowModal(false);
