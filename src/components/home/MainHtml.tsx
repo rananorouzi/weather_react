@@ -1,12 +1,24 @@
 import "../../App.css";
 import React, { ReactElement } from "react";
-import CreateCurrentWeatherHTML from "./CreateCurrentWeatherHTML";
-import CreateDailyWeatherHTML from "./CreateDailyWeatherHTML";
-import CreateChart from "./CreateChart";
-import {Setting, TempUnitButtons} from "./Settings";
-
-function MainHtml(props: { params: any }): ReactElement {
-  const params = props.params;
+import {
+  CreateCurrentWeatherHTML,
+  currentWeatherType,
+} from "./CreateCurrentWeatherHTML";
+import {
+  CreateDailyWeatherHTML,
+  weekWeatherType,
+} from "./CreateDailyWeatherHTML";
+import { CreateChart } from "./CreateChart";
+import { Setting, TempUnitButtons } from "./Settings";
+type mainHtmlParamTypes = {
+  onClickTempHandler: any;
+  hourlyData: Array<Number>;
+  weekWeather: weekWeatherType;
+  currentWeather: currentWeatherType;
+  tmp: string;
+  weather_url: string;
+};
+function MainHtml({ params }: { params: mainHtmlParamTypes }): ReactElement {
   return (
     <div className="container px-5 m-auto	m-auto">
       <div className="flex items-stretch justify-between flex-wrap div_center">
@@ -70,15 +82,13 @@ function MainHtml(props: { params: any }): ReactElement {
         </div>
         <div className="right_icons temp_chose self-center justify-en flex justify-items-end  mb-3">
           <Setting />
-          <TempUnitButtons buttonParams={
-            {
-              onClickRefHandler : params.onClickRefHandler,
-              onClickTempHandler : params.onClickTempHandler,
+          <TempUnitButtons
+            params={{
+              onClickTempHandler: params.onClickTempHandler,
               tmp: params.tmp,
-              buttonClassNames : params.buttonClassNames
-
-            }
-          } />
+              weather_url: params.weather_url,
+            }}
+          />
         </div>
       </div>
       <div className="overflow-hidden container lg:flex flex-row gap-3 font-sans div_center">
@@ -87,7 +97,7 @@ function MainHtml(props: { params: any }): ReactElement {
           className="lg:basis-1/4 bg-white border border-gray-200 rounded-lg shadow mb-2 lg:mb-0"
         >
           <div id="current" className="p-3 lg:p-5 w-full">
-            <CreateCurrentWeatherHTML currentWeather={params.currentWeather} />
+            <CreateCurrentWeatherHTML weatherData={params.currentWeather} />
           </div>
         </div>
         <div

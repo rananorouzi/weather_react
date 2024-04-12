@@ -1,9 +1,14 @@
 import "../../App.css";
 import React, { ReactElement } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { weatherCodes } from "../../data/weather-codes";
 import MainHtml from "./MainHtml";
 import { formatHourlyData, formatDailyData } from "./FormatData";
+import { currentWeatherType } from "./CreateCurrentWeatherHTML";
+import { weekWeatherType } from "./CreateDailyWeatherHTML";
+import { weatherParams } from "../../data/const-var";
+import useFetch from "../../hooks/useFetch";
+import useCreateGetURL from "../../hooks/useCreateGetURL";
 
 function Weather(): ReactElement {
   type dataType = {
@@ -12,44 +17,16 @@ function Weather(): ReactElement {
   const storageTemp: string | null = localStorage.getItem("defaultTemp");
   const defaultTemp: string = storageTemp != null ? storageTemp : "c";
 
-  const [data, setData] = useState<dataType>({});
   const [tmp, setTmp] = useState(defaultTemp);
-  let weatherUrl = "https://api.open-meteo.com/v1/forecast";
-  const weatherParams = {
-    latitude: "65.01",
-    longitude: "25.47",
-    current: "temperature_2m,weather_code,wind_speed_10m",
-    hourly: "temperature_2m",
-    daily: "weather_code,temperature_2m_max,temperature_2m_min",
-    models: "best_match",
-    temperature_unit: "",
-  };
-  let currentWeather: object = {};
-  let weekWeather: object = {};
+
+  let currentWeather!: currentWeatherType;
+  let weekWeather!: weekWeatherType;
   let hourlyData: Array<Number> = [];
+  weatherParams.temperature_unit = tmp === "f" ? "fahrenheit" : "";
 
-  if (tmp === "f") {
-    weatherParams.temperature_unit = "fahrenheit";
-  }
-  weatherUrl =
-    weatherUrl +
-    "?" +
-    Object.keys(weatherParams)
-      .map(function (key) {
-        if ((weatherParams as any)[key] !== "") {
-          return key + "=" + encodeURIComponent((weatherParams as any)[key]);
-        }
-        return "";
-      })
-      .join("&");
-
-  useEffect(() => {
-    fetch(weatherUrl)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, [weatherUrl]);
-
-  if (Object.keys(data).length > 0) {
+  const weatherUrl = useCreateGetURL(weatherParams);
+  const data: dataType = useFetch(weatherUrl);
+  if (typeof data !== "undefined" && typeof data["current"] !== "undefined") {
     // create current data
     currentWeather = {
       time: data["current"]["time"],
@@ -60,9 +37,20 @@ function Weather(): ReactElement {
       temperature_2m: data["current"]["temperature_2m"],
       temp_unit: data["current_units"]["temperature_2m"],
     };
-
+    const dailyData = {
+      daily_units: {
+        temperature_2m_max: data["daily_units"]["temperature_2m_max"],
+        temperature_2m_min: data["daily_units"]["temperature_2m_min"],
+      },
+      daily: {
+        time: data["daily"]["time"],
+        temperature_2m_max: data["daily"]["temperature_2m_max"],
+        temperature_2m_min: data["daily"]["temperature_2m_min"],
+        weather_code: data["daily"]["weather_code"],
+      },
+    };
     //create daily data
-    weekWeather = formatDailyData(data);
+    weekWeather = formatDailyData(dailyData);
 
     //create data for chart
     hourlyData = formatHourlyData(
@@ -73,23 +61,14 @@ function Weather(): ReactElement {
   const onClickTempHandler = (temp: string) => {
     temp === "f" ? setTmp("f") : setTmp("c");
   };
-  const onClickRefHandler = () => {
-    fetch(weatherUrl)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  };
-  const buttonClassNames = {
-    active: "bg-blue-500 text-white",
-    deactive: "text-slate-900 bg-white",
-  };
+
   const mainHtmlParams = {
     onClickTempHandler: onClickTempHandler,
-    onClickRefHandler: onClickRefHandler,
     hourlyData: hourlyData,
     weekWeather: weekWeather,
     currentWeather: currentWeather,
-    buttonClassNames: buttonClassNames,
     tmp: tmp,
+    weather_url: weatherUrl,
   };
   return <MainHtml params={mainHtmlParams} />;
 }

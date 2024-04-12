@@ -6,6 +6,7 @@ import {FormatDateToMonthDay } from './components/home/FormatDate'
 import CreateCurrentWeatherHTML from './components/home/CreateCurrentWeatherHTML'
 import CreateDailyWeatherHTML from './components/home/CreateDailyWeatherHTML'
 import CreateChart from './components/home/CreateChart'
+import {weekWeatherType} from './type/types'
 
 // TODO list:
 // 1. Add linter and prettier to project
@@ -28,7 +29,7 @@ function Weather() {
         models: 'best_match'
     };
     let currentWeather = {};
-    let weekWeather = {};
+    let weekWeather:weekWeatherType;
     let hourlyData = [];
 
     if(tmp === 'f'){

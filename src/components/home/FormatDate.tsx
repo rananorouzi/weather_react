@@ -1,10 +1,6 @@
-import React from "react";
+import { weekday } from "../../data/const-var";
 
-function FormatDateToMonthDay(props: { date: any }) {
-  const date = props.date;
-  if ((typeof date !== "string" || date === "") && typeof date !== "number") {
-    return <></>;
-  }
+function FormatDateToMonthDay({ date }: { date: string | number }) {
   let d = new Date(date);
   let dateFormatted =
     d.getDate() + " " + d.toLocaleString("default", { month: "long" });
@@ -13,15 +9,6 @@ function FormatDateToMonthDay(props: { date: any }) {
 }
 function CreateTodayDate() {
   let objToday = new Date();
-  let weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
   let dayOfWeek = weekday[objToday.getDay()];
   return dayOfWeek + ", " + objToday.getHours() + ":" + objToday.getMinutes();
 }

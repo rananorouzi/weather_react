@@ -2,9 +2,32 @@ import { CreateTodayDate } from "./FormatDate";
 import CheckWeatherSVG from "./CheckWeatherSVG";
 import { weatherCodes } from "../../data/weather-codes";
 import React from "react";
-
-function CreateCurrentWeatherHTML(props: { currentWeather: any }) {
-  const weatherData = props.currentWeather;
+export type currentWeatherType = {
+  time: string;
+  weather_code: number;
+  weather_code_des: string;
+  wind_speed: string;
+  wind_speed_unit: string;
+  temperature_2m: number;
+  temp_unit: string;
+};
+export function CreateCurrentWeatherHTML({
+  weatherData,
+}: {
+  weatherData: currentWeatherType;
+}) {
+  if (typeof weatherData === "undefined") {
+    return (
+      <>
+        <div
+          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative m-2"
+          role="alert"
+        >
+          <strong className="font-bold">Invalid parameter!</strong>
+        </div>
+      </>
+    );
+  }
   let date = <CreateTodayDate />;
   let wDesc;
   let temp = "undefined temp";
@@ -104,5 +127,3 @@ function CreateCurrentWeatherHTML(props: { currentWeather: any }) {
     </section>
   );
 }
-
-export default CreateCurrentWeatherHTML;
