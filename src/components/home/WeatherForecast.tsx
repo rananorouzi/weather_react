@@ -1,5 +1,5 @@
 import "../../App.css";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { useState } from "react";
 import { weatherCodes } from "../../data/weather-codes";
 import MainHtml from "./MainHtml";
@@ -7,7 +7,6 @@ import { formatHourlyData, formatDailyData } from "./FormatData";
 import { currentWeatherType } from "./CreateCurrentWeatherHTML";
 import { weekWeatherType } from "./CreateDailyWeatherHTML";
 import { weatherParams } from "../../data/const-var";
-import useFetch from "../../hooks/useFetch";
 import useCreateGetURL from "../../hooks/useCreateGetURL";
 
 function Weather(): ReactElement {
@@ -18,14 +17,19 @@ function Weather(): ReactElement {
   const defaultTemp: string = storageTemp != null ? storageTemp : "c";
 
   const [tmp, setTmp] = useState(defaultTemp);
-
+  const [data, setData] = useState<dataType>();
   let currentWeather!: currentWeatherType;
   let weekWeather!: weekWeatherType;
   let hourlyData: Array<Number> = [];
   weatherParams.temperature_unit = tmp === "f" ? "fahrenheit" : "";
 
   const weatherUrl = useCreateGetURL(weatherParams);
-  const data: dataType = useFetch(weatherUrl);
+  useEffect(() => {
+    fetch(weatherUrl)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [weatherUrl]);
+
   if (typeof data !== "undefined" && typeof data["current"] !== "undefined") {
     // create current data
     currentWeather = {
@@ -58,12 +62,18 @@ function Weather(): ReactElement {
       data["hourly"]["temperature_2m"],
     );
   }
-  const onClickTempHandler = (temp: string) => {
-    temp === "f" ? setTmp("f") : setTmp("c");
+  const onClickTempHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const button = e.target as HTMLButtonElement;
+    button.id === "temp_f" ? setTmp("f") : setTmp("c");
   };
-
+  const onClickRefHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    fetch(weatherUrl)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  };
   const mainHtmlParams = {
     onClickTempHandler: onClickTempHandler,
+    onClickRefHandler: onClickRefHandler,
     hourlyData: hourlyData,
     weekWeather: weekWeather,
     currentWeather: currentWeather,
