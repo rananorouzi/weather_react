@@ -6,7 +6,7 @@ export type currentWeatherType = {
   time: string;
   weather_code: number;
   weather_code_des: string;
-  wind_speed: string;
+  wind_speed: number;
   wind_speed_unit: string;
   temperature_2m: number;
   temp_unit: string;

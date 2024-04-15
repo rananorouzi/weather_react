@@ -11,12 +11,56 @@ import useCreateGetURL from "../../hooks/useCreateGetURL";
 
 function Weather(): ReactElement {
   type dataType = {
-    [key: string]: any;
+    latitude:	number,
+    longitude:	number,
+    generationtime_ms:	number,
+    utc_offset_seconds:	number,
+    timezone:	string,
+    timezone_abbreviation: string,
+    elevation: number,
+    current_units	: 
+    {
+      time:	string
+      interval:	string
+      temperature_2m: string
+      weather_code:	string
+      wind_speed_10m:	string
+   },
+   current:
+    {
+      time:	string
+      interval:	number
+      temperature_2m:	number
+      weather_code:	number
+      wind_speed_10m:	number
+    },
+    hourly_units:	
+     { 
+      time: string,
+      temperature_2m: string
+     },
+    hourly:	{
+       time: string[], 
+       temperature_2m: number[] 
+    },
+    daily_units	:
+     { 
+      time:	string
+      weather_code:	string
+      temperature_2m_max:	string
+      temperature_2m_min:	string
+     },
+    daily:	{
+      time:	string[]
+      weather_code:  number[] 
+      temperature_2m_max:	 number[] 
+      temperature_2m_min: number[] 
+     }
   };
   const storageTemp: string | null = localStorage.getItem("defaultTemp");
   const defaultTemp: string = storageTemp != null ? storageTemp : "c";
 
-  const [tmp, setTmp] = useState(defaultTemp);
+  const [tmp, setTmp] = useState<string>(defaultTemp);
   const [data, setData] = useState<dataType>();
   let currentWeather!: currentWeatherType;
   let weekWeather!: weekWeatherType;
@@ -51,7 +95,7 @@ function Weather(): ReactElement {
         temperature_2m_max: data["daily"]["temperature_2m_max"],
         temperature_2m_min: data["daily"]["temperature_2m_min"],
         weather_code: data["daily"]["weather_code"],
-      },
+      }
     };
     //create daily data
     weekWeather = formatDailyData(dailyData);
