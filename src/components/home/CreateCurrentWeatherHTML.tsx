@@ -29,15 +29,14 @@ export function CreateCurrentWeatherHTML({
     );
   }
   let date = <CreateTodayDate />;
-  let wDesc;
-  let temp = "undefined temp";
-  let wind = "undefined wind info";
+  let temp: string = "undefined temp";
+  let wind: string = "undefined wind info";
+  let wDesc: string = "";
   if (typeof weatherData == "object") {
-    if (typeof weatherCodes[weatherData["weather_code"]] == "undefined") {
-      wDesc = "undefined data";
-    } else {
-      wDesc = weatherData["weather_code_des"];
-    }
+    wDesc =
+      typeof weatherCodes[weatherData["weather_code"]] == "undefined"
+        ? "undefined data"
+        : weatherData["weather_code_des"];
 
     if (
       typeof weatherData["temperature_2m"] != "undefined" &&
@@ -59,20 +58,14 @@ export function CreateCurrentWeatherHTML({
       </header>
       <div className="flex">
         <div className="current_forecast w-full">
-          {" "}
           <CheckWeatherSVG code={weatherData["weather_code"]} />
           <div className="current_temp text-black font-sans text-4xl font-bold mb-1">
-            {" "}
-            {temp}{" "}
+            {temp}
           </div>
           <div className="daily_date text-black font-sans text-x1 font-bold mb-3">
-            {" "}
-            {date}{" "}
+            {date}
           </div>
-          <div className="current_weather_code pb-4 border-b mb-4">
-            {" "}
-            {wDesc}{" "}
-          </div>
+          <div className="current_weather_code pb-4 border-b mb-4">{wDesc}</div>
           <div className="current_wind">
             <svg
               className="inline-block pr-2"
@@ -95,9 +88,8 @@ export function CreateCurrentWeatherHTML({
                 strokeWidth="0.3"
               ></g>
               <g id="SVGRepo_iconCarrier">
-                {" "}
-                <title>wind-flag</title> <desc>Created with Sketch Beta.</desc>{" "}
-                <defs> </defs>{" "}
+                <title>wind-flag</title> <desc>Created with Sketch Beta.</desc>
+                <defs> </defs>
                 <g
                   id="Page-1"
                   strokeWidth="0.00030000000000000003"
@@ -109,18 +101,15 @@ export function CreateCurrentWeatherHTML({
                     transform="translate(-467.000000, -778.000000)"
                     fill="#ff0000"
                   >
-                    {" "}
                     <path
                       d="M495,780 L491,779.637 L491,791.363 L495,791 C496.104,791 497,790.104 497,789 L497,782 C497,780.896 496.104,780 495,780 L495,780 Z M483,792.091 L489,791.546 L489,779.455 L483,778.909 L483,792.091 L483,792.091 Z M471,780 L471,791 C471,792.104 471.896,793 473,793 L481,792.272 L481,778.728 L473,778 C471.896,778 471,778.896 471,780 L471,780 Z M468,778 C467.447,778 467,778.448 467,779 L467,807 C467,807.553 467.447,808 468,808 C468.553,808 469,807.553 469,807 L469,779 C469,778.448 468.553,778 468,778 L468,778 Z"
                       id="wind-flag"
-                    >
-                      {" "}
-                    </path>{" "}
-                  </g>{" "}
-                </g>{" "}
+                    ></path>
+                  </g>
+                </g>
               </g>
             </svg>
-            Wind speed: {wind}{" "}
+            Wind speed: {wind}
           </div>
         </div>
       </div>

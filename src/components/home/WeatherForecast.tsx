@@ -11,51 +11,47 @@ import useCreateGetURL from "../../hooks/useCreateGetURL";
 
 function Weather(): ReactElement {
   type dataType = {
-    latitude:	number,
-    longitude:	number,
-    generationtime_ms:	number,
-    utc_offset_seconds:	number,
-    timezone:	string,
-    timezone_abbreviation: string,
-    elevation: number,
-    current_units	: 
-    {
-      time:	string
-      interval:	string
-      temperature_2m: string
-      weather_code:	string
-      wind_speed_10m:	string
-   },
-   current:
-    {
-      time:	string
-      interval:	number
-      temperature_2m:	number
-      weather_code:	number
-      wind_speed_10m:	number
-    },
-    hourly_units:	
-     { 
-      time: string,
-      temperature_2m: string
-     },
-    hourly:	{
-       time: string[], 
-       temperature_2m: number[] 
-    },
-    daily_units	:
-     { 
-      time:	string
-      weather_code:	string
-      temperature_2m_max:	string
-      temperature_2m_min:	string
-     },
-    daily:	{
-      time:	string[]
-      weather_code:  number[] 
-      temperature_2m_max:	 number[] 
-      temperature_2m_min: number[] 
-     }
+    latitude: number;
+    longitude: number;
+    generationtime_ms: number;
+    utc_offset_seconds: number;
+    timezone: string;
+    timezone_abbreviation: string;
+    elevation: number;
+    current_units: {
+      time: string;
+      interval: string;
+      temperature_2m: string;
+      weather_code: string;
+      wind_speed_10m: string;
+    };
+    current: {
+      time: string;
+      interval: number;
+      temperature_2m: number;
+      weather_code: number;
+      wind_speed_10m: number;
+    };
+    hourly_units: {
+      time: string;
+      temperature_2m: string;
+    };
+    hourly: {
+      time: string[];
+      temperature_2m: number[];
+    };
+    daily_units: {
+      time: string;
+      weather_code: string;
+      temperature_2m_max: string;
+      temperature_2m_min: string;
+    };
+    daily: {
+      time: string[];
+      weather_code: number[];
+      temperature_2m_max: number[];
+      temperature_2m_min: number[];
+    };
   };
   const storageTemp: string | null = localStorage.getItem("defaultTemp");
   const defaultTemp: string = storageTemp != null ? storageTemp : "c";
@@ -95,7 +91,7 @@ function Weather(): ReactElement {
         temperature_2m_max: data["daily"]["temperature_2m_max"],
         temperature_2m_min: data["daily"]["temperature_2m_min"],
         weather_code: data["daily"]["weather_code"],
-      }
+      },
     };
     //create daily data
     weekWeather = formatDailyData(dailyData);
@@ -106,11 +102,13 @@ function Weather(): ReactElement {
       data["hourly"]["temperature_2m"],
     );
   }
-  const onClickTempHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClickTempHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
     const button = e.target as HTMLButtonElement;
     button.id === "temp_f" ? setTmp("f") : setTmp("c");
   };
-  const onClickRefHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClickRefHandler = () => {
     fetch(weatherUrl)
       .then((res) => res.json())
       .then((data) => setData(data));

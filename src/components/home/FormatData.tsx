@@ -2,7 +2,7 @@ import React from "react";
 import { FormatDateToMonthDay } from "./FormatDate";
 import { weatherCodes } from "../../data/weather-codes";
 import { weekWeatherType } from "./CreateDailyWeatherHTML";
-export const formatHourlyData = (times: string[], temps:  number[] ) => {
+export const formatHourlyData = (times: string[], temps: number[]) => {
   let hourlyData: Array<Number> = [];
   for (let h in times) {
     (hourlyData as any)[h] = [
@@ -16,13 +16,13 @@ type dailyDataType = {
   daily_units: {
     temperature_2m_max: string;
     temperature_2m_min: string;
-  },
+  };
   daily: {
-    time: string[],
-    temperature_2m_max: number[],
-    temperature_2m_min: number[],
-    weather_code: number[]
-  }
+    time: string[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
+    weather_code: number[];
+  };
 };
 export const formatDailyData = (data: dailyDataType) => {
   let weekWeather: weekWeatherType = {

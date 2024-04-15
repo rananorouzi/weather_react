@@ -94,7 +94,7 @@ export function CreateDailyWeatherHTML({
           todayWidth
         }
       >
-        <div className="daily_date font-bold mb-2">{date}</div>{" "}
+        <div className="daily_date font-bold mb-2">{date}</div>
         <CheckWeatherSVG
           code={weekWeather["forecast"][index]["weather_code"] as number}
         />
@@ -103,10 +103,9 @@ export function CreateDailyWeatherHTML({
           className={"daily_temp text-sm flex justify-between " + todayDegWidth}
         >
           <span className="max text-gray-800 max-md:inline-block">
-            {" "}
             {maxTemp}
           </span>
-          <span className="min text-gray-400 pl-3 max-md:pl-0">{minTemp} </span>{" "}
+          <span className="min text-gray-400 pl-3 max-md:pl-0">{minTemp} </span>
         </div>
       </div>,
     );
